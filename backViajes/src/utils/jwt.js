@@ -17,7 +17,7 @@ export const  createAccessToken = async (payload) => {
     });
 };
 
-exportconst verifyJWT = async ({token}) => {
+export const verifyJWT = async ({token}) => {
     return new Promise((resolve, reject) => {
         jwt.verify(token, config.jwt_secret, (err, decoded) => {
             if (err || !decoded.userId) reject('Invalid token');
