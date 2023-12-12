@@ -1,5 +1,6 @@
 import mongoose, {Schema} from "mongoose";
 
+//modelo de datos del posteo , incluye datos requeridos de usuario
 const PostSchema = new mongoose.Schema(
     {
         title: {
