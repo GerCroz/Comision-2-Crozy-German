@@ -5,9 +5,20 @@ import { UserModel } from "../models/user.model.js";
 export const ctrlGetPosts = async (req, res) => {
     try {
         const posts = await PostModel.find()
-        .populate('author', ['username', 'avatarURL'])
-        .populate('comments', ['description', 'author'])
+        .populate({
+          path: "author",
+          select: ["username", "avatarURL"],
+        })
+        .populate({
+          path: "comments",
+          select: ["description", "author", "createdAt"],
+          populate: {
+            path: "author",
+            select: ["username", "avatarURL"],
+          },
+        });
 
+        
         return res.status(200).json(posts);
     } catch (error) {
         return res.status(500).json({ error: error.message });
