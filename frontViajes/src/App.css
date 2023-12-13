@@ -1,4 +1,21 @@
-#root {
+.navitem {
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+  /* background-color: #333; */
+}
+
+.postItem {
+  margin-top: 80px;
+  width: 50rem;
+  height: 2px;
+}
+
+.coment-bottom {
+  max-height: 290px;
+}
+
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +56,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
