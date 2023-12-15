@@ -3,6 +3,7 @@ import { PostModel } from "../models/post.model.js";
 import { UserModel } from "../models/user.model.js";
 import { isAuthor } from "./post.controllers.js";
 
+// controlador para los comentarios 
 export const crtlGetComment = async (req, res) => {
     try {
         const comments = await CommentModel.find().populate("author", [
@@ -50,13 +51,16 @@ export const crtlGetCommentsPost = async (req, res) => {
     }
 };
 
+// crear comentarios 
 export const crtlCreateComment = async (req, res) => {
+    //paso el id del post por parametro
     const {postId} = req.params;
+    console.log(postId);
     const userId = req.user._id;
 
     try {
         const post = await PostModel.findOne({ 
-            _Id: postId 
+            _id: postId 
         });
 
         if (!post) {
@@ -72,7 +76,7 @@ export const crtlCreateComment = async (req, res) => {
         await comment.save();
 
         await PostModel.findOneAndUpdate(
-            {_id: userId},
+            {_id: postId},
             {$push: { comments: comment._id } }
         );
 
@@ -87,8 +91,9 @@ export const crtlCreateComment = async (req, res) => {
     }
 };
 
-
+//actualizar un comentario
 export const crtlUpdateComment = async (req, res) => {
+    //paso por parametro el id del comentario a actualizar
     const { commentId } = req.params;
     const userId = req.user._id;
 
@@ -115,6 +120,7 @@ export const crtlUpdateComment = async (req, res) => {
     }
 };
 
+//eliminar un comentario 
 export const ctrlDeleteComment = async (req, res) => {
     const {commentId} = req.params;
     const userId = req.user._id;

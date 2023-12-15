@@ -16,21 +16,23 @@ import {
   } from "../models/validations/comment.validation.js";
 
   export const commentRouter = Router();
-
+//trae los comentarios
   commentRouter.get("/comments", crtlGetComments);
-
+//comentaio por id de comentario
   commentRouter.get("/comments/:commentId", crtlGetComment);
 
   commentRouter.get("/comments-post/:postId", crtlGetCommentsPost);
 
+  //crea un comentario para un post determinado
   commentRouter.post(
     "/comments/:postId",
     authHeader,
     validateToken,
-    createCommentValidation,
+    //createCommentValidation,
     crtlCreateComment
   );
 
+  //actualizar el comentario por Id de comentario
   commentRouter.put(
     "/comments/:commentId",
     authHeader,
@@ -38,7 +40,7 @@ import {
     updateCommentValidation,
     crtlUpdateComment
   );
-
+// elimina un comentario por Id de comentario
   commentRouter.delete(
     "comment/:commentId",
     authHeader,

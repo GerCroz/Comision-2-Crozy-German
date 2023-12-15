@@ -22,9 +22,7 @@ postRouter.get("/posts/:id", ctrlGetPost);
 
 postRouter.post(
     "/posts",
-    authHeader,
     validateToken,
-    createPostValidation,
     ctrlCreatePost,
 );
 

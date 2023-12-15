@@ -7,6 +7,6 @@ export const authRouter = Router();
 
 authRouter.post('/register', registerValidation, crtlRegister);
 
-authRouter.post('/login', loginValidation, ctrlLogin);
+authRouter.post('/login', ctrlLogin);
 
 authRouter.get('/veryfy/:token', verifyToken);

@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { config } from "../settings/config.js";
 
 export const  createAccessToken = async (payload) => {
-    return new Promkise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         jwt.sign(
             payload,
             config.jwt_secret,

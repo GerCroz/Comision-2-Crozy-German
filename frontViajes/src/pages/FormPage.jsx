@@ -98,7 +98,7 @@ export const FormPage = () => {
           className="d-flex flex-column p-10 rounded-4"
           onSubmit={handleSubmit}
         >
-          <h1 className="my-2">TEST FORM</h1>
+          <h1 className="my-2">Formulario</h1>
           <label htmlFor="title">Titulo</label>
           <input
             type="text"

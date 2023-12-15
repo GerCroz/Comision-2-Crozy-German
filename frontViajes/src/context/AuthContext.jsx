@@ -35,6 +35,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
     setAuth(null);
     setIsAuthenticated(false);
+    setLoading(true)
   };
 
   // useEffect(() => {
@@ -99,6 +100,7 @@ export const AuthProvider = ({ children }) => {
         signin,
         isAuthenticated,
         setLoading,
+        loading,
         setAuth,
         setIsAuthenticated,
         logout,

@@ -1,16 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export const Navbar = () => {
-  const { isAuthenticated, setIsAuthenticated, auth, setAuth, setLoading } = useAuth();
+  const { isAuthenticated, auth, logout } = useAuth();
 
-  const logout = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    setAuth(null);
-    setIsAuthenticated(false);
-    setLoading(true)
-  };
+  
 
   return (
     <>

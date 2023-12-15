@@ -46,10 +46,10 @@ export const PostFormPage = () => {
 
       const data = await response.json()
       console.log(data)
-      if(res.ok){
+      if(response.ok){
         navigate('/posts')
       } else {
-        const data = await res.json()
+        const data = await response.json()
         setErrorsPost(data.errors.body)
       }
     }
@@ -87,6 +87,7 @@ export const PostFormPage = () => {
 
   const updatePost = async (id, data) => {
     try {
+      console.log(data);
       const response = await fetch(`${API_URL}/posts/${id}`, {
         method: "PUT",
         headers: {
@@ -130,7 +131,7 @@ export const PostFormPage = () => {
           className="d-flex flex-column p-10 rounded-4"
           onSubmit={handleSubmit}
         >
-          <h1 className="my-2">TEST FORM</h1>
+          <h1 className="my-2">Nuevo Post</h1>
           <label htmlFor="title">Titulo</label>
           <input
             type="text"
@@ -156,8 +157,8 @@ export const PostFormPage = () => {
           ></textarea>
           {
             errorsPost?.description && 
-            errorsPost?.description.map(errorImage => (
-              <div class="form-text" id="basic-addon4">{errorImage}</div>
+            errorsPost?.description.map((errorImage, index) => (
+              <div className="form-text" key={index}>{errorImage}</div>
             ))
           }
 

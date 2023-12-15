@@ -2,6 +2,7 @@ import { CommentModel } from "../models/comment.model.js";
 import { PostModel } from "../models/post.model.js";
 import { UserModel } from "../models/user.model.js";
 
+// con este controlador traigo todos los post con la estructura del modelo de post
 export const ctrlGetPosts = async (req, res) => {
     try {
         const posts = await PostModel.find()
@@ -17,14 +18,14 @@ export const ctrlGetPosts = async (req, res) => {
             select: ["username", "avatarURL"],
           },
         });
+       
 
-        
         return res.status(200).json(posts);
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
 }
-
+// sirve para recuperar un post en particular segun el ID
 export const ctrlGetPost = async (req, res) => {
     const { id } = req.params
 
@@ -44,6 +45,7 @@ export const ctrlGetPost = async (req, res) => {
     }
 }
 
+//crear un nuevo Post 
 export const ctrlCreatePost = async (req, res) => {
     const userId = req.user._id;
 
@@ -65,7 +67,7 @@ export const ctrlCreatePost = async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 }
-
+// actualizar un post por Id 
 export const ctrlUpdatePost = async (req, res) => {
     const { id } = req.params
     const userId = req.user._id;
@@ -95,7 +97,7 @@ export const ctrlUpdatePost = async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 }
-
+// eliminar un post segun ID determinado
 export const ctrlDeletePost = async (req, res) => {
     const { id } = req.params
     const userId = req.user._id;

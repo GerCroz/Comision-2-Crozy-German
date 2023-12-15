@@ -5,6 +5,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { config } from "../settings/config.js";
 
+//controlador para el resgitro del usuario
 export const crtlRegister = async (req, res) => {
     try {
         const user = new UserModel(req.body);
@@ -23,7 +24,7 @@ export const crtlRegister = async (req, res) => {
         res.status(500).json({message:'Internal Server Error'});
     }
 }
-
+//controlador para el login
 export const ctrlLogin = async (req, res) => {
     try {
         const {email, password} = req.body;
@@ -52,7 +53,7 @@ export const ctrlLogin = async (req, res) => {
         res.status(500).json({message:'Internal Server Error'});
     }
 }
-
+// verificador de token
 export const verifyToken = async (req, res) => {
     const token = req.params.token;
 
