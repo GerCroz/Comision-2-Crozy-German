@@ -55,9 +55,9 @@ export const ctrlLogin = async (req, res) => {
 }
 // verificador de token
 export const verifyToken = async (req, res) => {
-    const token = req.params.token;
+    const { token } = req.params;
 
-    if (!token) return res.status(401).json({message: 'no hay'});
+    if (!token) return res.status(401).json({message: 'no existe el token'});
 
     jwt.verify(token, config.jwt_secret, async(err, user) => {
         if (err) return res.status(401).json({message: 'Unauthorized'});

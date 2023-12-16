@@ -9,4 +9,4 @@ authRouter.post('/register', registerValidation, crtlRegister);
 
 authRouter.post('/login', ctrlLogin);
 
-authRouter.get('/veryfy/:token', verifyToken);
+authRouter.get('/verify/:token', verifyToken);
