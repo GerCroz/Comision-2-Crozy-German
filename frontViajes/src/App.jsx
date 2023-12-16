@@ -6,9 +6,11 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { PostsPage } from "./pages/PostsPage";
-import { Test } from "./pages/Test";
+//import { Test } from "./pages/Test";
 import { PostFormPage } from "./pages/PostFormPage";
 import { LoginPage } from "./pages/LoginPage";
+//import { Homepage } from "./pages/Homepage";
+//import { Test } from "./pages/Test";
 
 function App() {
   const [count, setCount] = useState(0);

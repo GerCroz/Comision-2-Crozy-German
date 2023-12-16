@@ -143,7 +143,7 @@ export const PostFormPage = () => {
             autoFocus
           />
            {
-            errorsPost?.title && <div class="form-text" id="basic-addon4">{errorsPost.title}</div>
+            errorsPost?.title && <div className="form-text" id="basic-addon4">{errorsPost.title}</div>
           }
 
           <label htmlFor="description">Descripcion</label>
@@ -173,7 +173,7 @@ export const PostFormPage = () => {
           {
             errorsPost?.imageURL && 
             errorsPost?.imageURL.map(errorImage => (
-              <div class="form-text" id="basic-addon4">{errorImage}</div>
+              <div className="form-text" id="basic-addon4">{errorImage}</div>
             ))
           }
 

@@ -72,45 +72,45 @@ export const RegisterPage = () => {
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
           <form className="bg-subtle p-3 w-25 border border-dark rounded-4 bg-body-tertiary" onSubmit={handleSubmit} ref={ref}>
-              <div class="mb-3">
-                  <label htmlFor="username" class="form-label">Username<b className="text-danger">(*)</b></label>
-                  <input type="text" class="form-control" id="username" name="username" aria-describedby="usernameHelp"/>
+              <div className="mb-3">
+                  <label htmlFor="username" className="form-label">Username<b className="text-danger">(*)</b></label>
+                  <input type="text" className="form-control" id="username" name="username" aria-describedby="usernameHelp"/>
                   {
                     errorsRegister?.username && errorsRegister?.username.map(errorUsername => (
-                        <div class="form-text">{errorUsername}</div>
+                        <div className="form-text">{errorUsername}</div>
                     ))
                   }
               </div>
-              <div class="mb-3">
-                  <label htmlFor="email" class="form-label">Email<b className="text-danger">(*)</b></label>
-                  <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"/>
+              <div className="mb-3">
+                  <label htmlFor="email" className="form-label">Email<b className="text-danger">(*)</b></label>
+                  <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp"/>
                   {
                     errorsRegister?.email && errorsRegister?.email.map(errorEmail => (
-                        <div class="form-text">{errorEmail}</div>
+                        <div className="form-text">{errorEmail}</div>
                     ))
                   }
-                  {/* <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> */}
+                  {/* <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div> */}
               </div>
-              <div class="mb-3">
-                  <label htmlFor="password" class="form-label">Password<b className="text-danger">(*)</b></label>
-                  <input type="password" class="form-control" id="password" name="password"/>
+              <div className="mb-3">
+                  <label htmlFor="password" className="form-label">Password<b className="text-danger">(*)</b></label>
+                  <input type="password" className="form-control" id="password" name="password"/>
                   {
                     errorsRegister?.password && errorsRegister?.password.map(errorPassword => (
-                        <div class="form-text">{errorPassword}</div>
+                        <div className="form-text">{errorPassword}</div>
                     ))
                   }
               </div>
-              <div class="mb-3">
-                  <label htmlFor="avatar" class="form-label">Avatar</label>
-                  <input type="text" class="form-control" id="avatar" name="avatar"/>
+              <div className="mb-3">
+                  <label htmlFor="avatar" className="form-label">Avatar</label>
+                  <input type="text" className="form-control" id="avatar" name="avatar"/>
                   {
                     errorsRegister?.avatarURL && errorsRegister?.avatarURL.map(errorAvatar => (
-                        <div class="form-text">{errorAvatar}</div>
+                        <div className="form-text">{errorAvatar}</div>
                     ))
                   }
               </div>
-              <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">REGISTER</button>
+              <div className="d-flex justify-content-center">
+                <button type="submit" className="btn btn-primary">REGISTER</button>
               </div>
           </form>
       </div>

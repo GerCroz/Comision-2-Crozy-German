@@ -36,7 +36,7 @@ export const PostsPage = () => {
     try {
       const response = await fetch(`${API_URL}/comments/${commentId}`);
       const data = await response.json();
-      //recupero el id del comentario que se encuentra seleccionado 
+      //recupero el id del comentario que se encuentra seleccionado para editarlo
       console.log(commentId);
       return data;
     } catch (error) {
