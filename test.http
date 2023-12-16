@@ -1,6 +1,6 @@
 ###
-POST http://localhost:3000/api/login
-Content-Type: application/json
+DELETE http://localhost:3000/api/comment/657cf1190340abb064e8a8f4
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTdjODBiYmYzYmUyMWI2ZGU3OTQ0NzYiLCJpYXQiOjE3MDI2OTAwNTMsImV4cCI6MTcwMjc3NjQ1M30.bAnn124wSqgVitLAp9ouNkSt4RW1nv7Gu6YmVbb3aKo"
 
 {
     "email": "hola"

@@ -38,24 +38,6 @@ export const AuthProvider = ({ children }) => {
     setLoading(true)
   };
 
-  // useEffect(() => {
-  //     setTimeout(() => {
-  //     const user = JSON.parse(localStorage.getItem("user"));
-  //     const token = localStorage.getItem("token");
-
-  //     // si no tenemos alguno de los dos campos en el localStorage borramos todo
-  //     if (!user || !token) {
-  //         localStorage.removeItem("user");
-  //         localStorage.removeItem("token");
-
-  //         setAuth(null);
-  //         return;
-  //     }
-
-  //     setAuth({ user, token });
-  //     }, 1000);
-  // }, []);
-
   useEffect(() => {
     const checkLogin = async () => {
       const token = localStorage.getItem("token");

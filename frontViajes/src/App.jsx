@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
@@ -6,14 +5,11 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { PostsPage } from "./pages/PostsPage";
-//import { Test } from "./pages/Test";
 import { PostFormPage } from "./pages/PostFormPage";
 import { LoginPage } from "./pages/LoginPage";
-//import { Homepage } from "./pages/Homepage";
-//import { Test } from "./pages/Test";
+import { Homepage } from "./pages/Homepage";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -21,7 +17,7 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path="/" element={<PostsPage />} />
+            <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/posts" element={<PostsPage />} />

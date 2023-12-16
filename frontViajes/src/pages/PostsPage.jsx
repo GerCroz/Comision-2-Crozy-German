@@ -18,6 +18,7 @@ export const PostsPage = () => {
 
 
   //console.log(posts);
+  const navigate = useNavigate();
 
 
   const getPosts = async () => {
@@ -37,7 +38,6 @@ export const PostsPage = () => {
       const response = await fetch(`${API_URL}/comments/${commentId}`);
       const data = await response.json();
       //recupero el id del comentario que se encuentra seleccionado para editarlo
-      console.log(commentId);
       return data;
     } catch (error) {
       console.error(error); 
@@ -49,32 +49,51 @@ export const PostsPage = () => {
       if (params.commentId) {
         const comment = await getComment(params.commentId)
         //en el comment trae un arreglo de los comentarios, si paso el indice me toma eso y no el seleccionado 
-        console.log(comment[2].description);
-        setNewComment( `${comment[0].description}`)
+        setNewComment(comment.description)
       } else {
         getPosts()
       }
     }
     loadComments()
-  }, [newComment]);
+  }, [params.commentId]);
 
   const handleCommentSubmit = async (postId) => {
+    
     try {
-      const response = await fetch(`${API_URL}/comments/${postId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": token
-        },
-        body: JSON.stringify({
-          description: newComment,
-        }),
-      });
-
-      if (response.status !== 201) return alert("Error eliminated comment");
-
-      setNewComment("")
-      getPosts();
+      if(params.commentId) {
+        const response = await fetch(`${API_URL}/comments/${params.commentId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
+          },
+          body: JSON.stringify({
+            description: newComment,
+          }),
+        });
+  
+        if (response.status !== 200) return alert("Error updated comment");
+  
+        setNewComment("")
+        navigate('/posts')
+      } else {
+        const response = await fetch(`${API_URL}/comments/${postId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
+          },
+          body: JSON.stringify({
+            description: newComment,
+          }),
+        });
+  
+        if (response.status !== 201) return alert("Error eliminated comment");
+  
+        setNewComment("")
+        getPosts()
+      }
+      
     } catch (error) {
       console.error(error);
     }
@@ -94,6 +113,7 @@ export const PostsPage = () => {
   };
   
   const deletePost = async (id) => {
+
     try {
       const response = await fetch(`${API_URL}/posts/${id}`, {
         method: "DELETE",
@@ -113,7 +133,7 @@ export const PostsPage = () => {
 
   const deleteComment = async (id) => {
     try {
-      const response = await fetch(`${API_URL}/comments/${id}`, {
+      const response = await fetch(`${API_URL}/comment/${id}`, {
         method: "DELETE",
         headers: {
           "Authorization": token

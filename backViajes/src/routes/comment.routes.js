@@ -41,10 +41,4 @@ import {
     crtlUpdateComment
   );
 // elimina un comentario por Id de comentario
-  commentRouter.delete(
-    "comment/:commentId",
-    authHeader,
-    validateToken,
-    deleteCommentValidation,
-    ctrlDeleteComment
-  );
+  commentRouter.delete("/comment/:commentId", authHeader, validateToken, deleteCommentValidation, ctrlDeleteComment)

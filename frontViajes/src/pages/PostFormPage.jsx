@@ -33,7 +33,8 @@ export const PostFormPage = () => {
     
     try {
       if (params.id) {
-      updatePost(params.id, formState)
+      const responseUpdate = await updatePost(params.id, formState)
+      responseUpdate.ok && navigate('/posts')
     } else {
       const response = await fetch(`${API_URL}/posts`, {
         method: "POST",
@@ -87,7 +88,6 @@ export const PostFormPage = () => {
 
   const updatePost = async (id, data) => {
     try {
-      console.log(data);
       const response = await fetch(`${API_URL}/posts/${id}`, {
         method: "PUT",
         headers: {
@@ -96,6 +96,7 @@ export const PostFormPage = () => {
         },
         body: JSON.stringify(data)
       });
+      return response;
     } catch (error) {
       console.error(error); 
     }
@@ -113,7 +114,7 @@ export const PostFormPage = () => {
       }
     }
     loadPosts()
-  }, [])
+  }, [params.id])
 
   useEffect(() => {
     if (errorsPost){
@@ -131,7 +132,7 @@ export const PostFormPage = () => {
           className="d-flex flex-column p-10 rounded-4"
           onSubmit={handleSubmit}
         >
-          <h1 className="my-2">Nuevo Post</h1>
+          <h1 className="my-2"> { params.id ? "Editar Post" : "Nuevo Post" } </h1>
           <label htmlFor="title">Titulo</label>
           <input
             type="text"

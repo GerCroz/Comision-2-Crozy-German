@@ -5,8 +5,9 @@ import { isAuthor } from "./post.controllers.js";
 
 // controlador para los comentarios 
 export const crtlGetComment = async (req, res) => {
+    const {commentId} = req.params
     try {
-        const comments = await CommentModel.find().populate("author", [
+        const comments = await CommentModel.findOne({_id: commentId}).populate("author", [
             "username",
             "avatarURL",
         ]);
@@ -116,7 +117,7 @@ export const crtlUpdateComment = async (req, res) => {
 
         res.status(200).json(comment);
     } catch (error) {
-      res.status(500).json({ error: "Couldn't update comment"});
+      res.status(500).json({ error: "Couldn't updated comment"});
     }
 };
 
@@ -127,27 +128,32 @@ export const ctrlDeleteComment = async (req, res) => {
 
     const isComment = await isCommentAuthor({ commentId, userId});
 
+    console.log(isComment);
+
     if (!isComment){
         return res.status(403).json({ error: "User is not the comment author"});
     }
 
     try {
-        await CommentModel.findOneAndDelete({ _id: commentId, author: userId });
+        await CommentModel.findByIdAndDelete({_id: commentId, author: userId})
 
-        await PostModel.findOneAndDelete(
+        await PostModel.findOneAndUpdate(
             { comments: commentId },
-            {$pull: {comments: commentId }}
+            { $pull: { comments: commentId }}
         );
 
-        await UserModel.findByIdAndUpdate (
-            {comments: commentId},
-            {$pull: { comments: commentId }}
+        await UserModel.findOneAndUpdate(
+            { comments: commentId },
+            { $pull: { comments: commentId }}
         );
 
-        res.status(200).json();
+        res.status(200).json("Eliminado correctamente")
     } catch (error) {
-        res.status(500).json({ error:"Couldn't delete music"});
+        console.log(error);
+        res.status(500).json({ error: "Couldn't deleted comment"});
     }
+
+    
 };
 
 export const isCommentAuthor = async ({ commentId, userId }) => {
