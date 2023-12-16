@@ -8,7 +8,9 @@
 
 </div>
 
-# ...[Proyecto CRUD con Express]...
+# ...[Proyecto CRUD con Vite + React]...
+
+# ...[Proyecto CRUD con Vite + React]...
 
 Este es el back-end y FrontEnd de la app de viajes solicitada como trabajo final del curos de argentina programa 
 
@@ -35,5 +37,9 @@ Para poder utilizar el proyecto en localhost en necesario clonarlo y tener algun
 - [PostMan](https://www.postman.com/downloads/) para puebas de APIS. (Opcional)
 - [Git](https://git-scm.com/downloads) para poder gestionar las versiones.
 - [Instalacion de las dependencias del Package.json]
+
+## configuracion del .env
+
+configurar correctamente el las variables de entorno segun el archivo de .env.template
 
 
